@@ -1,0 +1,57 @@
+<%= form_with(model: lost_item, local: true) do |form| %>
+  <% if lost_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lost_item.errors.count, "error") %> prohibited this lost_item from being saved:</h2>
+
+      <ul>
+      <% lost_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :lost_item_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :lost_item_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location, id: :lost_item_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :found_date %>
+    <%= form.date_select :found_date, id: :lost_item_found_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_approved %>
+    <%= form.check_box :is_approved, id: :lost_item_is_approved %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_solved %>
+    <%= form.check_box :is_solved, id: :lost_item_is_solved %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note %>
+    <%= form.text_area :note, id: :lost_item_note %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :lost_item_user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

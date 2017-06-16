@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @lost_item.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @lost_item.description %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @lost_item.location %>
+</p>
+
+<p>
+  <strong>Found date:</strong>
+  <%= @lost_item.found_date %>
+</p>
+
+<p>
+  <strong>Is approved:</strong>
+  <%= @lost_item.is_approved %>
+</p>
+
+<p>
+  <strong>Is solved:</strong>
+  <%= @lost_item.is_solved %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @lost_item.note %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @lost_item.user %>
+</p>
+
+<%= link_to 'Edit', edit_lost_item_path(@lost_item) %> |
+<%= link_to 'Back', lost_items_path %>

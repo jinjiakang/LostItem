@@ -1,0 +1,16 @@
+<h1>Erickang</h1>
+
+<% if user_signed_in? %>
+  <%= current_user.email %>
+  <%= link_to "logout" , destroy_user_session_path, method: "delete" %>
+  <% else %>
+  <%= link_to "register", new_user_registration_path %>
+  <%= link_to "login", new_user_session_path %>
+<% end %>
+
+<% if can? :manage, :creat,:item %> 
+
+  <h2>hello</h2>
+
+<% end %>
+
