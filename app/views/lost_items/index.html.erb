@@ -1,17 +1,19 @@
 <p id="notice"><%= notice %></p>
-
+<%= current_user.email %>
 <h1>Lost Items</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
       <th>Description</th>
       <th>Location</th>
       <th>Found date</th>
+<!--
       <th>Is approved</th>
       <th>Is solved</th>
       <th>Note</th>
+-->
       <th>User</th>
       <th colspan="3"></th>
     </tr>
@@ -27,7 +29,7 @@
         <td><%= lost_item.is_approved %></td>
         <td><%= lost_item.is_solved %></td>
         <td><%= lost_item.note %></td>
-        <td><%= lost_item.user %></td>
+        <td><%= current_user.email %></td>
         <td><%= link_to 'Show', lost_item %></td>
         <td><%= link_to 'Edit', edit_lost_item_path(lost_item) %></td>
         <td><%= link_to 'Destroy', lost_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

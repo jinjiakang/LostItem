@@ -4,7 +4,7 @@ class LostItemsController < ApplicationController
   # GET /lost_items
   # GET /lost_items.json
   def index
-    @lost_items = LostItem.all
+    @lost_items = LostItem.available_for(current_user)
   end
 
   # GET /lost_items/1
@@ -25,16 +25,14 @@ class LostItemsController < ApplicationController
   # POST /lost_items.json
   def create
     @lost_item = LostItem.new(lost_item_params)
+    @lost_item.user = current_user
 
-    respond_to do |format|
       if @lost_item.save
-        format.html { redirect_to @lost_item, notice: 'Lost item was successfully created.' }
-        format.json { render :show, status: :created, location: @lost_item }
+        redirect_to @lost_item, notice: 'Lost item was successfully created.' 
       else
-        format.html { render :new }
-        format.json { render json: @lost_item.errors, status: :unprocessable_entity }
+        render :new 
       end
-    end
+    
   end
 
   # PATCH/PUT /lost_items/1
@@ -69,6 +67,6 @@ class LostItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lost_item_params
-      params.require(:lost_item).permit(:title, :description, :location, :found_date, :is_approved, :is_solved, :note, :user_id)
+      params.require(:lost_item).permit(:title, :description, :location, :found_date)
     end
 end
